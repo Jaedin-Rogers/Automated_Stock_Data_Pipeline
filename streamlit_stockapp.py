@@ -12,7 +12,7 @@ CSV_URL = "https://raw.githubusercontent.com/Jaedin-Rogers/Stock_Data_API/main/s
 
 @st.cache_data(ttl=600)
 def load_data():
-    return pd.read_csv(CSV_URL)
+    df = pd.read_csv(CSV_URL)
     df["Date"] = pd.to_datetime(df["Date"])
     return df
 
@@ -30,7 +30,8 @@ for ticker in group1:
     st.dataframe(stock.head())
 
     means = stock.mean(numeric_only=True)
-    st.write("Means:", means.to_dict())
+    st.metric("Average Close", f"{means['Close']:.2f}")
+    st.metric("Average Volume", f"{means['Volume']:,.0f}")
 
 fig1, ax1 = plt.subplots()
 
@@ -40,6 +41,7 @@ for ticker in group1:
 
 ax1.legend()
 ax1.set_title("Closing Prices")
+fig1.autofmt_xdate()
 
 st.pyplot(fig1)
 
@@ -66,5 +68,6 @@ for ticker in group2:
 
 ax2.legend()
 ax2.set_title("Closing Prices")
+fig2.autofmt_xdate()
 
 st.pyplot(fig2)
