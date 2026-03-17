@@ -8,9 +8,8 @@ all_data = []
 for ticker in tickers:
 
     df = yf.download(ticker, period="10d")
-    df["Date"] = df.index
     df.reset_index(drop=True, inplace=True)
-    
+    df = df[["Date", "Open", "High", "Low", "Close", "Volume"]] 
 
     df['Ticker'] = ticker
     all_data.append(df)
