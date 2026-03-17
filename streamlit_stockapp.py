@@ -30,8 +30,22 @@ for ticker in group1:
     st.dataframe(stock.head())
 
     means = stock.mean(numeric_only=True)
-    st.metric("Average Close", f"{means['Close']:.2f}")
-    st.metric("Average Volume", f"{means['Volume']:,.0f}")
+    col1, col2, col3, col4, col5 = st.columns(5)
+
+with col1:
+    st.metric("Open", f"{means['Open']:.2f}")
+
+with col2:
+    st.metric("High", f"{means['High']:.2f}")
+
+with col3:
+    st.metric("Low", f"{means['Low']:.2f}")
+
+with col4:
+    st.metric("Close", f"{means['Close']:.2f}")
+
+with col5:
+    st.metric("Volume", f"{means['Volume']:,.0f}")
 
 fig1, ax1 = plt.subplots()
 
@@ -58,7 +72,22 @@ for ticker in group2:
     st.dataframe(stock.head())
 
     means = stock.mean(numeric_only=True)
-    st.write("Means:", means.to_dict())
+    col1, col2, col3, col4, col5 = st.columns(5)
+
+with col1:
+    st.metric("Open", f"{means['Open']:.2f}")
+
+with col2:
+    st.metric("High", f"{means['High']:.2f}")
+
+with col3:
+    st.metric("Low", f"{means['Low']:.2f}")
+
+with col4:
+    st.metric("Close", f"{means['Close']:.2f}")
+
+with col5:
+    st.metric("Volume", f"{means['Volume']:,.0f}")
 
 fig2, ax2 = plt.subplots()
 
