@@ -12,7 +12,7 @@ for ticker in tickers:
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
         
-    df.reset_index()
+    df.reset_index(inplace=True)
 
     df.rename(columns={df.columns[0]: "Date"}, inplace=True)
     
