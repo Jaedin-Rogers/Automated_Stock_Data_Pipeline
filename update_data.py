@@ -8,10 +8,9 @@ all_data = []
 for ticker in tickers:
 
     df = yf.download(ticker, period="10d")
-    df.reset_index()
+    df["Date"] = df.index
+    df.reset_index(drop=True, inplace=True)
     
-    if "Date" not in df.columns:
-        df.rename(columns={df.columns[0]: "Date"}, inplace=True)
 
     df['Ticker'] = ticker
     all_data.append(df)
