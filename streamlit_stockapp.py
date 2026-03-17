@@ -26,7 +26,7 @@ st.header("Apple vs TSM vs Samsung")
 group1 = ["AAPL", "TSM", "SMSN.IL"]
 for ticker in group1:
     st.subheader(ticker)
-    stock = get_stock_data(ticker
+    stock = get_stock_data(ticker)
     st.dataframe(stock.head())
 
     means = stock.mean(numeric_only=True)
