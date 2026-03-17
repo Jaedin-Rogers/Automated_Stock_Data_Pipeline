@@ -11,7 +11,9 @@ def root():
 @app.get("/stocks")
 def get_stocks():
     
-    df = pd.read_csv("stock_data.csv")
+    df = pd.read_csv(
+    "https://raw.githubusercontent.com/Jaedin-Rogers/Stock_Data_API/main/stock_data.csv"
+)
     return df.to_dict(orient="records")
 
 @app.get("/stocks/{ticker}")
