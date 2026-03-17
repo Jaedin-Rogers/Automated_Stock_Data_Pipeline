@@ -10,7 +10,7 @@ def download_stock(ticker, period = "10d"):
     return data
 
 def show_head(data):
-    return data.head().to_dict()
+    return data.head(10).to_dict()
 
 # Function used to compute means
 def show_means(data):
