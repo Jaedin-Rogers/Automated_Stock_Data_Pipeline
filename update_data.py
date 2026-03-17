@@ -8,6 +8,11 @@ all_data = []
 for ticker in tickers:
 
     df = yf.download(ticker, period="10d")
+
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = df.columns.get_level_values(0)
+        
+    df["Date"] = df.index
     df.reset_index()
     df = df[["Date", "Open", "High", "Low", "Close", "Volume"]] 
 
