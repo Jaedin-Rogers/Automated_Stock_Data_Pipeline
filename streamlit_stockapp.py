@@ -35,7 +35,7 @@ for ticker in group1:
     
     for i, (metric, value) in enumerate(means.items()):
         if metric == "Volume":
-            cols[i].metric(metric, f"{value:,.0f}")
+            cols[i].metric(metric, f"{value/1_000_000:.1f}M")
         
         else:
             cols[i].metric(metric, f"{value:.2f}")
