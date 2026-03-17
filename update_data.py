@@ -13,6 +13,9 @@ for ticker in tickers:
         df.columns = df.columns.get_level_values(0)
         
     df.reset_index()
+
+    df.rename(columns={df.columns[0]: "Date"}, inplace=True)
+    
     df = df[["Date", "Open", "High", "Low", "Close", "Volume"]] 
 
     df['Ticker'] = ticker
