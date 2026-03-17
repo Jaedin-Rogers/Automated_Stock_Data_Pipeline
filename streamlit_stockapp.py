@@ -27,7 +27,7 @@ group1 = ["AAPL", "TSM", "SMSN.IL"]
 for ticker in group1:
     st.subheader(ticker)
     stock = get_stock_data(ticker)
-    st.dataframe(stock.head())
+    st.dataframe(stock.head(10))
 
     means = stock.mean(numeric_only=True)
     st.subheader(f"{ticker} Means")
@@ -62,7 +62,7 @@ for ticker in group2:
     st.subheader(ticker)
 
     stock = get_stock_data(ticker)
-    st.dataframe(stock.head())
+    st.dataframe(stock.head(10))
 
     means = stock.mean(numeric_only=True)
     st.subheader(f"{ticker} Means")
