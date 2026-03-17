@@ -18,13 +18,17 @@ def get_stocks():
 
 @app.get("/stocks/{ticker}")
 def stock_head(ticker: str):
-    df = pd.read_csv("stock_data.csv")
+    df = pd.read_csv(
+        "https://raw.githubusercontent.com/Jaedin-Rogers/Stock_Data_API/main/stock_data.csv"
+    )
     filtered = df[df["Ticker"] == ticker]
     return filtered.head().to_dict(orient="records")
 
 @app.get("/stocks/{ticker}/means")
 def stock_means(ticker: str):
-    df = pd.read_csv("stock_data.csv")
+    df = pd.read_csv(
+        "https://raw.githubusercontent.com/Jaedin-Rogers/Stock_Data_API/main/stock_data.csv"
+    )
     filtered = df[df["Ticker"] == ticker]
     means = filtered.mean(numeric_only=True)
     return means.to_dict()
