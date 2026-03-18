@@ -14,7 +14,7 @@ st.title("Stock Dashboard")
 
 CSV_URL = "https://raw.githubusercontent.com/Jaedin-Rogers/Stock_Data_API/main/stock_data.csv"
 
-@st.cache_data(ttl=43200)
+@st.cache_data(ttl=3600)
 def load_data():
     df = pd.read_csv(CSV_URL)
     df["Date"] = pd.to_datetime(df["Date"])
