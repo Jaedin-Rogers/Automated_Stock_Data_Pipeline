@@ -2,6 +2,10 @@ import streamlit as st
 from stock_functions import *
 import pandas as pd
 import matplotlib.pyplot as plt
+from streamlit_autorefresh import st_autorefresh
+
+
+st_autorefresh(interval=43200000, key="data_refresh")
 
 st.title("Stock Price App")
 st.write("Powered by FastAPI and Streamlit")
@@ -10,7 +14,7 @@ st.title("Stock Dashboard")
 
 CSV_URL = "https://raw.githubusercontent.com/Jaedin-Rogers/Stock_Data_API/main/stock_data.csv"
 
-@st.cache_data(ttl=600)
+@st.cache_data(ttl=43200)
 def load_data():
     df = pd.read_csv(CSV_URL)
     df["Date"] = pd.to_datetime(df["Date"])
